@@ -42,9 +42,9 @@ ax = fig.add_subplot(111, projection='3d')
 
 surface = ax.plot_surface(X, Y, demArray, rstride=1, cstride=1, cmap=plt.get_cmap('terrain'), vmin=verticalMin, vmax=verticalMax, linewidth=0, antialiased=False)
 
-ax.set_xlabel(r'$X$')
-ax.set_ylabel(r'$Y$')
-ax.set_zlabel(r'$Elevation$')
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Elevation')
 
 fig.colorbar(surface, shrink=0.5, aspect=20)
 
