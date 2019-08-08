@@ -6,7 +6,6 @@ from matplotlib import cm
 
 currentFilePath = sys.argv[0]
 currentFileDir = os.path.dirname(currentFilePath)
-#demPath = os.path.join(currentFileDir, '..', 'data', 'Muenster.tif')
 demPath = os.path.join(currentFileDir, '..', 'data', 'DEM_NRW_100Meter.tif')
 
 absDemPath = os.path.abspath(demPath)
@@ -15,7 +14,6 @@ print("DEM path is: ", demPath)
 print("Abs DEM path is: ", absDemPath)
 
 dem = gdal.Open(absDemPath)
-gt = dem.GetGeoTransform()
 
 demArray = dem.ReadAsArray()
 
@@ -25,6 +23,8 @@ demArrayColumns = demArray.shape[1]
 # add threshold of 10 for z-axis
 verticalMin = demArray.min() + 10 if demArray.min() >= 0 else demArray.min() - 10
 verticalMax = demArray.max() + 10 if demArray.max() >= 0 else demArray.max() - 10
+
+gt = dem.GetGeoTransform()
 
 pixelWidth = gt[1]
 pixelHeight = gt[5]
